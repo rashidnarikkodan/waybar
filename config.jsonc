@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 34,
+    "height": 0,
     "margin-bottom": 0,
     "modules-left": [
         "hyprland/workspaces",
@@ -11,18 +11,18 @@
         "clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
-        "pulseaudio#microphone",
-        "network",
-        "bluetooth",
+        "privacy",
+        "tray",
         "cpu",
         "memory",
         "temperature",
         "disk",
+        "bluetooth",
+        "network",
+        "pulseaudio#microphone",
+        "pulseaudio",
         "battery",
-        "tray",
-        "custom/power"
+        "group/power"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -74,7 +74,8 @@
     },
     "network": {
         "interval": 5,
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": "  {essid}",
+        "max-length": 10,
         "format-ethernet": " {ipaddr}",
         "format-disconnected": " Disconnected",
         "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n {bandwidthUpBits} |  {bandwidthDownBits}",
@@ -139,21 +140,82 @@
         "tooltip-format": "{timeTo} remaining",
         "on-click": "kitty -e upower -i /org/freedesktop/UPower/devices/battery_BAT0"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "tooltip-format": "Idle Inhibitor\n\nStatus: {status}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
     "tray": {
         "spacing": 10,
         "icon-size": 18
     },
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power",
+            "custom/lock",
+            "custom/suspend",
+            "custom/logout",
+            "custom/reboot",
+            "custom/quit"
+        ]
+    },
     "custom/power": {
         "format": "⏻",
-        "on-click": "/home/rashidnarikkodan/.config/waybar/power_menu.sh",
         "tooltip": false
+    },
+    "custom/lock": {
+        "format": "󰌾",
+        "tooltip": true,
+        "on-click": "hyprlock",
+        "return-type": "json",
+        "exec": "echo '{\"tooltip\": \"Lock Screen\"}'",
+        "interval": 86400
+    },
+    "custom/suspend": {
+        "format": "󰤄",
+        "tooltip": true,
+        "on-click": "systemctl suspend",
+        "return-type": "json",
+        "exec": "echo '{\"tooltip\": \"Suspend System\"}'",
+        "interval": 86400
+    },
+    "custom/logout": {
+        "format": "󰍃",
+        "tooltip": true,
+        "on-click": "hyprctl dispatch exit",
+        "return-type": "json",
+        "exec": "echo '{\"tooltip\": \"Logout Session\"}'",
+        "interval": 86400
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": true,
+        "on-click": "systemctl reboot",
+        "return-type": "json",
+        "exec": "echo '{\"tooltip\": \"Reboot System\"}'",
+        "interval": 86400
+    },
+    "custom/quit": {
+        "format": "󰐥",
+        "tooltip": true,
+        "on-click": "systemctl poweroff",
+        "return-type": "json",
+        "exec": "echo '{\"tooltip\": \"Shutdown System\"}'",
+        "interval": 86400
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "nodes": [
+            {
+                "type": "audio-in",
+                "tooltip": true
+            },
+            {
+                "type": "screenshare",
+                "tooltip": true
+            }
+        ]
     }
 }
