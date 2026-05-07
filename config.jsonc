@@ -1,0 +1,159 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-bottom": 0,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "network",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "temperature",
+        "disk",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "active-only": false,
+        "sort-by-number": true,
+        "on-click": "activate",
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+    "hyprland/window": {
+        "format": " {title}",
+        "max-length": 50,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+    "clock": {
+        "format": "{:%a %d %b %H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": " {usage}%",
+        "tooltip-format": "CPU Usage\n\nCurrent: {usage}%",
+        "on-click": "kitty -e htop"
+    },
+    "memory": {
+        "interval": 10,
+        "format": " {percentage}%",
+        "tooltip-format": "Memory: {percentage}%",
+        "on-click": "kitty -e htop"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C",
+        "tooltip-format": "Temperature: {temperatureC}°C",
+        "on-click": "kitty -e watch sensors"
+    },
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/",
+        "tooltip-format": "Disk: {percentage_used}%\nFree: {free}",
+        "on-click": "kitty -e ncdu /"
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": " Disconnected",
+        "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n {bandwidthUpBits} |  {bandwidthDownBits}",
+        "tooltip-format-ethernet": "Ethernet: {ipaddr}\n {bandwidthUpBits} |  {bandwidthDownBits}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "kitty -e nmtui"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "scroll-step": 5,
+        "tooltip-format": "Volume: {volume}%",
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+        "max-volume": 100,
+        "format-icons": {
+            "default": [
+                "",
+                ""
+            ]
+        }
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+        "scroll-step": 5
+    },
+    "battery": {
+        "interval": 5,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip-format": "{timeTo} remaining",
+        "on-click": "kitty -e upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "tooltip-format": "Idle Inhibitor\n\nStatus: {status}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "spacing": 10,
+        "icon-size": 18
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "/home/rashidnarikkodan/.config/waybar/power_menu.sh",
+        "tooltip": false
+    }
+}

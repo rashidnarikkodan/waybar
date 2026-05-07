@@ -1,0 +1,186 @@
+/* Unified Premium Waybar Theme */
+
+@define-color bg_color #1e1e2e;
+@define-color bg_alt #313244;
+@define-color text_color #cdd6f4;
+@define-color subtext #a6adc8;
+@define-color accent_blue #89b4fa;
+@define-color accent_mauve #cba6f7;
+@define-color accent_green #a6e3a1;
+@define-color accent_red #f38ba8;
+@define-color accent_peach #fab387;
+@define-color accent_teal #94e2d5;
+@define-color accent_maroon #eba0ac;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s cubic-bezier(.55, .055, .675, .19);
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.45);
+    color: @text_color;
+    border-bottom: 1px solid rgba(137, 180, 250, 0.3);
+
+}
+
+/* Tooltips */
+tooltip {
+    background: @bg_color;
+    border: 1px solid @accent_blue;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @text_color;
+    padding: 3px;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 0 10px;
+    margin: 4px 3px;
+    color: @subtext;
+    background: transparent;
+    border-radius: 6px;
+    transition: none;
+    /* Instant switching feel */
+}
+
+#workspaces button.active {
+    color: @bg_color;
+    background: @accent_blue;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(137, 180, 250, 0.5);
+    transition: none;
+}
+
+#workspaces button:hover {
+    background: @bg_alt;
+    color: @text_color;
+    transition: none;
+}
+
+#window {
+    padding: 0 15px;
+    margin: 4px 5px;
+    color: @accent_mauve;
+    font-weight: bold;
+}
+
+#clock {
+    padding: 0 15px;
+    margin: 4px 0;
+    color: @text_color;
+    font-weight: 800;
+}
+
+/* Module Styling */
+#pulseaudio,
+#pulseaudio.microphone,
+#network,
+#bluetooth,
+#cpu,
+#memory,
+#temperature,
+#disk,
+#battery,
+#idle_inhibitor,
+#tray,
+#custom-power {
+    padding: 0 8px;
+    margin: 5px 3px;
+    background: @bg_alt;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Individual Module Colors */
+#cpu {
+    color: @accent_peach;
+}
+
+#memory {
+    color: @accent_mauve;
+}
+
+#temperature {
+    color: @accent_teal;
+}
+
+#temperature.critical {
+    background-color: @accent_red;
+    color: @bg_color;
+    animation: blink 0.8s steps(2, start) infinite;
+}
+
+#disk {
+    color: @accent_maroon;
+}
+
+#network {
+    color: @accent_blue;
+}
+
+#bluetooth {
+    color: @accent_mauve;
+}
+
+#pulseaudio {
+    color: @accent_teal;
+}
+
+#pulseaudio.muted {
+    color: @subtext;
+}
+
+#battery {
+    color: @accent_green;
+}
+
+#battery.charging {
+    color: @accent_teal;
+    text-shadow: 0 0 5px @accent_teal;
+}
+
+#battery.warning {
+    color: @accent_peach;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @accent_red;
+    color: @bg_color;
+    animation: blink 0.8s steps(2, start) infinite;
+}
+
+#custom-power {
+    color: @accent_red;
+    font-size: 16px;
+    padding: 0 15px;
+    margin-right: 10px;
+}
+
+#custom-power:hover {
+    background-color: @accent_red;
+    color: @bg_color;
+    box-shadow: 0 0 15px @accent_red;
+}
+
+#idle_inhibitor.activated {
+    color: @accent_blue;
+    background-color: @bg_alt;
+}
+
+#tray {
+    padding-right: 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: transparent;
+        color: @accent_red;
+    }
+}
