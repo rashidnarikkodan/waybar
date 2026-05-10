@@ -209,11 +209,25 @@ window#waybar {
 }
 
 /* Drawer Child Modules */
-#custom-lock { color: @accent_blue; }
-#custom-suspend { color: @accent_teal; }
-#custom-logout { color: @accent_mauve; }
-#custom-reboot { color: @accent_peach; }
-#custom-quit { color: @accent_red; }
+#custom-lock {
+    color: @accent_blue;
+}
+
+#custom-suspend {
+    color: @accent_teal;
+}
+
+#custom-logout {
+    color: @accent_mauve;
+}
+
+#custom-reboot {
+    color: @accent_peach;
+}
+
+#custom-quit {
+    color: @accent_red;
+}
 
 #custom-lock,
 #custom-suspend,
@@ -239,13 +253,13 @@ window#waybar {
 tooltip,
 #tooltip {
     background: rgba(30, 30, 46, 0.98);
-    border-radius: 20px;
+    border-radius: 12px;
     border: 1px solid rgba(137, 180, 250, 0.4);
 }
 
 tooltip label,
 #tooltip label {
-    padding: 12px;
+    padding: 6px;
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 14px;
     color: @text_color;
@@ -254,10 +268,10 @@ tooltip label,
 /* Specific Calendar Styling */
 tooltip calendar,
 #tooltip calendar {
-    padding: 15px;
+    padding: 10px;
     margin: 5px;
     background: transparent;
-    border-radius: 15px;
+    border-radius: 12px;
 }
 
 tooltip calendar>header,
