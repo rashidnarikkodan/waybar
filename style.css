@@ -20,10 +20,9 @@
 }
 
 window#waybar {
-    background-color: rgba(17, 17, 27, 0.9);
+    background-color: rgba(17, 17, 27, 0.3);
     color: @text_color;
     margin: 0 0;
-    border-radius: 30px;
 }
 
 /* Base Module Styling */
