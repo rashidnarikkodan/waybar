@@ -1,0 +1,50 @@
+{
+  "layer": "top",
+  "position": "top",
+  "output": "eDP-1",
+  "name": "laptop-bar",
+  "height": 28,
+  "margin-bottom": 0,
+  "include": [
+    "/home/rashidnarikkodan/.config/waybar/modules.jsonc"
+  ],
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "privacy",
+    "tray",
+    "cpu",
+    "memory",
+    "temperature",
+    "disk",
+    "bluetooth",
+    "network",
+    "pulseaudio#microphone",
+    "pulseaudio",
+    "battery",
+    "group/power"
+  ],
+  "tray": {
+    "spacing": 10,
+    "icon-size": 18
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 18,
+    "nodes": [
+      {
+        "type": "audio-in",
+        "tooltip": true
+      },
+      {
+        "type": "screenshare",
+        "tooltip": true
+      }
+    ]
+  }
+}
