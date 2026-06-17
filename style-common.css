@@ -1,4 +1,4 @@
-/* Unified Premium Waybar Theme - Fiery Black Hole */
+/* Unified Premium Waybar Theme - Fiery Black Hole (Gold Base case) */
 
 @define-color bg_color #080505;
 @define-color bg_alt rgba(15, 10, 10, 0.65);
@@ -126,13 +126,43 @@ window#waybar {
     font-weight: bold;
 }
 
-/* System Monitors (CPU/Memory/Disk/Temp) styled in fiery hot accents */
+/* System Monitors (CPU/Memory/Disk/Temp) styled in gold base case, transitioning to orange/red like fire */
 #cpu {
+    color: @accent_gold;
+}
+
+#cpu.warning {
     color: @accent_orange;
 }
 
+#cpu.critical {
+    background: @critical_red;
+    color: #ffffff;
+    border: 1px solid @critical_red;
+    animation-name: pulse;
+    animation-duration: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 #memory {
-    color: @accent_amber;
+    color: @accent_gold;
+}
+
+#memory.warning {
+    color: @accent_orange;
+}
+
+#memory.critical {
+    background: @critical_red;
+    color: #ffffff;
+    border: 1px solid @critical_red;
+    animation-name: pulse;
+    animation-duration: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #disk {
@@ -140,7 +170,7 @@ window#waybar {
 }
 
 #temperature {
-    color: @accent_orange;
+    color: @accent_gold;
 }
 
 #temperature.critical {
@@ -164,7 +194,7 @@ window#waybar {
 }
 
 #bluetooth {
-    color: @accent_amber;
+    color: @accent_gold;
 }
 
 #bluetooth.connected {
@@ -173,11 +203,11 @@ window#waybar {
 
 /* Audio Settings */
 #pulseaudio {
-    color: @accent_amber;
+    color: @accent_gold;
 }
 
 #pulseaudio.microphone {
-    color: @accent_orange;
+    color: @accent_gold;
 }
 
 #pulseaudio.muted {
@@ -196,9 +226,9 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-    color: @warning_yellow;
-    background: rgba(255, 235, 59, 0.08);
-    border: 1px solid rgba(255, 235, 59, 0.2);
+    color: @accent_orange;
+    background: rgba(255, 87, 34, 0.08);
+    border: 1px solid rgba(255, 87, 34, 0.2);
 }
 
 #battery.critical:not(.charging) {
