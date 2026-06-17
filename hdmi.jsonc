@@ -24,7 +24,7 @@
     "disk",
     "bluetooth",
     "network",
-    "custom/microphone",
+    "pulseaudio#microphone",
     "pulseaudio",
     "battery",
     "group/power"

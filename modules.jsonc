@@ -100,16 +100,15 @@
       "critical": 111
     }
   },
-  "custom/microphone": {
-    "format": "{}",
-    "return-type": "json",
-    "exec": "/home/rashidnarikkodan/.config/waybar/scripts/microphone.sh",
-    "exec-if": "which pactl",
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭 Muted",
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
-    "tooltip": true
+    "scroll-step": 5
   },
   "battery": {
     "interval": 5,

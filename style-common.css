@@ -33,7 +33,6 @@ window#waybar {
 #window,
 #clock,
 #pulseaudio,
-#custom-microphone,
 #network,
 #bluetooth,
 #cpu,
@@ -61,7 +60,6 @@ window#waybar {
 /* Hover effects: Accretion Disk Glow */
 #clock:hover,
 #pulseaudio:hover,
-#custom-microphone:hover,
 #network:hover,
 #bluetooth:hover,
 #cpu:hover,
@@ -204,29 +202,25 @@ window#waybar {
 }
 
 /* Audio Settings (Speakers) */
-#pulseaudio {
+#pulseaudio:not(.microphone) {
     color: @critical_red;
 }
 
-#pulseaudio.critical {
+#pulseaudio:not(.microphone).critical {
     color: @accent_gold;
 }
 
-#pulseaudio.muted {
+#pulseaudio:not(.microphone).muted {
     color: @subtext;
     background: rgba(15, 10, 10, 0.35);
 }
 
 /* Microphone Settings */
-#custom-microphone {
+#pulseaudio.microphone {
     color: @accent_gold;
 }
 
-#custom-microphone.critical {
-    color: @critical_red;
-}
-
-#custom-microphone.muted {
+#pulseaudio.microphone.muted {
     color: @subtext;
     background: rgba(15, 10, 10, 0.35);
 }
