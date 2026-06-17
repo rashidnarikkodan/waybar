@@ -3,7 +3,7 @@
   "position": "top",
   "output": "eDP-1",
   "name": "laptop-bar",
-  "height": 28,
+  "height": 16,
   "margin-bottom": 0,
   "include": [
     "/home/rashidnarikkodan/.config/waybar/modules.jsonc"
@@ -31,11 +31,11 @@
   ],
   "tray": {
     "spacing": 10,
-    "icon-size": 18
+    "icon-size": 12
   },
   "privacy": {
     "icon-spacing": 4,
-    "icon-size": 18,
+    "icon-size": 12,
     "nodes": [
       {
         "type": "audio-in",

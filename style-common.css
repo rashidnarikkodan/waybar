@@ -46,7 +46,7 @@ window#waybar {
 #custom-reboot,
 #custom-quit {
     background: @bg_alt;
-    padding: 2px 14px;
+    padding: 1px 14px;
     margin: 4px 3px;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -242,7 +242,7 @@ window#waybar {
 #custom-reboot,
 #custom-quit {
     font-size: 16px;
-    padding: 0 10px;
+    padding: 0 14px;
 }
 
 #custom-power:hover {
