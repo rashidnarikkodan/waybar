@@ -27,16 +27,16 @@
 #waybar.hdmi-bar #custom-logout,
 #waybar.hdmi-bar #custom-reboot,
 #waybar.hdmi-bar #custom-quit {
-    padding: 0 4px;
+    padding: 0 8px;
     margin: 1px 1px;
-    border-radius: 4px;
+    border-radius: 8px;
     min-height: 0;
 }
 
 #waybar.hdmi-bar #workspaces button {
-    padding: 0 2px;
+    padding: 0 8px;
     margin: 0px;
-    border-radius: 3px;
+    border-radius: 8px;
     min-height: 0;
 }
 
@@ -51,5 +51,5 @@
 #waybar.hdmi-bar #custom-reboot,
 #waybar.hdmi-bar #custom-quit {
     font-size: 11px;
-    padding: 0 3px;
+    padding: 0px 8px;
 }

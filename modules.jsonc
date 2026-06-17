@@ -1,67 +1,69 @@
 {
   "hyprland/workspaces": {
-    "disable-scroll": true,
+    "disable-scroll": false,
     "all-outputs": true,
     "active-only": false,
     "sort-by-number": true,
     "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format": "{name}",
     "persistent-workspaces": {
       "*": 5
     }
   },
   "hyprland/window": {
-    "format": " {title}",
-    "max-length": 50,
+    "format": "  {title}",
+    "max-length": 40,
     "rewrite": {
       "": "Desktop"
     }
   },
   "clock": {
-    "format": "{:%a %d %b %H:%M}",
-    "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+    "format": "  {:%I:%M %p    %a %d}",
+    "format-alt": "  {:%H:%M:%S    %d-%m-%Y}",
     "tooltip-format": "<tt>{calendar}</tt>"
   },
   "cpu": {
     "interval": 5,
-    "format": " {usage}%",
-    "tooltip-format": "CPU Usage\n\nCurrent: {usage}%",
-    "on-click": "kitty -e htop"
+    "format": "  {usage}%",
+    "tooltip-format": "CPU Usage: {usage}%",
+    "on-click": "kitty -e btop"
   },
   "memory": {
     "interval": 10,
-    "format": " {percentage}%",
-    "tooltip-format": "Memory: {used:0.1f}G / {total:0.1f}G ({percentage}%)",
-    "on-click": "kitty -e htop"
+    "format": "󰍛  {percentage}%",
+    "tooltip-format": "Memory Usage\n\nUsed:\t{used:0.1f}G\nTotal:\t{total:0.1f}G\nPercent:\t{percentage}%",
+    "on-click": "kitty -e btop"
   },
   "temperature": {
     "critical-threshold": 80,
-    "format": " {temperatureC}°C",
+    "format": "  {temperatureC}°C",
     "tooltip-format": "Temperature: {temperatureC}°C",
-    "on-click": "kitty -e watch sensors"
+    "on-click": "kitty -e s-tui"
   },
   "disk": {
     "interval": 30,
-    "format": " {percentage_used}%",
+    "format": "󰋊  {percentage_used}%",
     "path": "/",
-    "tooltip-format": "Disk: {percentage_used}%\nFree: {free}",
-    "on-click": "kitty -e ncdu /"
+    "tooltip-format": "Disk Usage\n\nUsed:\t{percentage_used}%\nFree:\t{free}",
+    "on-click": "kitty -e gdu /"
   },
   "network": {
     "interval": 5,
-    "format-wifi": "  {essid}",
-    "max-length": 10,
-    "format-ethernet": " {ipaddr}",
-    "format-disconnected": " Disconnected",
+    "format-wifi": "󰤨  {essid}",
+    "max-length": 15,
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-disconnected": "󰤭  Disconnected",
     "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n {bandwidthUpBits} |  {bandwidthDownBits}",
     "tooltip-format-ethernet": "Ethernet: {ipaddr}\n {bandwidthUpBits} |  {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "kitty -e nmtui"
+    "on-click": "kitty -e impala"
   },
   "bluetooth": {
-    "format": " {status}",
-    "format-connected": " {device_alias}",
-    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "format": "󰂯  {status}",
+    "format-connected": "󰂱  {device_alias}",
+    "format-connected-battery": "󰂱  {device_alias}  {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -69,8 +71,8 @@
     "on-click": "kitty -e bluetui"
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": " Muted",
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  Muted",
     "scroll-step": 5,
     "tooltip-format": "Volume: {volume}%",
     "on-click": "pavucontrol",
@@ -80,15 +82,16 @@
     "max-volume": 100,
     "format-icons": {
       "default": [
-        "",
-        ""
+        "󰕿",
+        "󰖀",
+        "󰕾"
       ]
     }
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Muted",
+    "format-source": "󰍬  {volume}%",
+    "format-source-muted": "󰍭  Muted",
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
@@ -100,17 +103,23 @@
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 20
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format": "{icon}  {capacity}%",
+    "format-charging": "󱐌 {icon}  {capacity}%",
+    "format-plugged": "󱐌 {icon}  {capacity}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
     ],
     "tooltip-format": "{timeTo} remaining",
     "on-click": "kitty -e upower -i /org/freedesktop/UPower/devices/battery_BAT0"

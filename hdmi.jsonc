@@ -31,11 +31,11 @@
   ],
   "tray": {
     "spacing": 10,
-    "icon-size": 16
+    "icon-size": 18
   },
   "privacy": {
     "icon-spacing": 4,
-    "icon-size": 16,
+    "icon-size": 18,
     "nodes": [
       {
         "type": "audio-in",

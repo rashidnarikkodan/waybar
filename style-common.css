@@ -1,7 +1,7 @@
-/* Unified Premium Waybar Theme - Common Styles */
+/* Unified Premium Waybar Theme - Common Styles (Glassmorphism & Glows) */
 
-@define-color bg_color rgba(30, 30, 46, 0.8);
-@define-color bg_alt rgba(49, 50, 68, 0.6);
+@define-color bg_color #1e1e2e;
+@define-color bg_alt rgba(49, 50, 68, 0.45);
 @define-color text_color #cdd6f4;
 @define-color subtext #a6adc8;
 @define-color accent_blue #89b4fa;
@@ -20,13 +20,12 @@
 }
 
 window#waybar {
-    background-color: rgba(17, 17, 27, 0.3);
+    background-color: rgba(15, 15, 23, 0.75);
     color: @text_color;
-    margin: 0 0;
-    min-height: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Base Module Styling */
+/* Base Module Styling with Glassmorphism */
 #workspaces,
 #window,
 #clock,
@@ -47,14 +46,15 @@ window#waybar {
 #custom-reboot,
 #custom-quit {
     background: @bg_alt;
-    padding: 0 12px;
+    padding: 2px 14px;
     margin: 4px 3px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s cubic-bezier(.55, .055, .675, .19);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover Effects for all interactive modules */
+/* Responsive Floating Lift-up & Soft Glow Hover Effects */
 #clock:hover,
 #pulseaudio:hover,
 #network:hover,
@@ -71,39 +71,48 @@ window#waybar {
 #custom-logout:hover,
 #custom-reboot:hover,
 #custom-quit:hover {
-    background: rgba(137, 180, 250, 0.2);
-    border: 1px solid rgba(137, 180, 250, 0.4);
-    box-shadow: 0 0 10px rgba(137, 180, 250, 0.1);
+    background: rgba(137, 180, 250, 0.18);
+    border: 1px solid rgba(137, 180, 250, 0.35);
+    box-shadow: 0 4px 12px rgba(137, 180, 250, 0.15);
 }
 
-/* Workspaces */
+/* Workspaces dots design */
 #workspaces {
-    padding: 0 5px;
+    padding: 2px 8px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    margin: 2px 2px;
+    padding: 0 8px;
+    margin: 2px 0;
     color: @subtext;
     background: transparent;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: @text_color;
 }
 
 #workspaces button.active {
-    color: @bg_color;
-    background: @accent_blue;
+    color: #11111b;
+    background: linear-gradient(45deg, @accent_mauve, @accent_blue);
     font-weight: bold;
+    box-shadow: 0 0 8px rgba(203, 166, 247, 0.4);
 }
 
 #workspaces button.urgent {
     background: @accent_red;
     color: @bg_color;
+    box-shadow: 0 0 8px rgba(243, 139, 168, 0.4);
 }
 
 /* Window Title */
 #window {
     background: transparent;
     border: none;
+    box-shadow: none;
     color: @accent_mauve;
     font-weight: bold;
 }
@@ -114,7 +123,7 @@ window#waybar {
     font-weight: bold;
 }
 
-/* CPU / Memory / Disk */
+/* CPU / Memory / Disk / Temp */
 #cpu {
     color: @accent_peach;
 }
@@ -127,7 +136,6 @@ window#waybar {
     color: @accent_yellow;
 }
 
-/* Temperature */
 #temperature {
     color: @accent_teal;
 }
@@ -143,7 +151,7 @@ window#waybar {
     animation-direction: alternate;
 }
 
-/* Network */
+/* Network & Bluetooth */
 #network {
     color: @accent_blue;
 }
@@ -152,7 +160,6 @@ window#waybar {
     color: @accent_red;
 }
 
-/* Bluetooth */
 #bluetooth {
     color: @accent_mauve;
 }
@@ -161,7 +168,7 @@ window#waybar {
     color: @accent_blue;
 }
 
-/* Audio */
+/* Audio Settings */
 #pulseaudio {
     color: @accent_teal;
 }
@@ -172,10 +179,10 @@ window#waybar {
 
 #pulseaudio.muted {
     color: @subtext;
-    background: rgba(49, 50, 68, 0.4);
+    background: rgba(49, 50, 68, 0.25);
 }
 
-/* Battery */
+/* Battery Settings */
 #battery {
     color: @accent_green;
 }
@@ -200,7 +207,7 @@ window#waybar {
     animation-direction: alternate;
 }
 
-/* Power Menu */
+/* Power Menu styling */
 #custom-power {
     color: @accent_red;
     font-size: 16px;
@@ -240,7 +247,7 @@ window#waybar {
 
 #custom-power:hover {
     background: @accent_red;
-    color: @bg_color;
+    color: #11111b;
     box-shadow: 0 0 15px rgba(243, 139, 168, 0.5);
 }
 
@@ -249,19 +256,20 @@ window#waybar {
     color: @accent_red;
 }
 
-/* Tooltip & Calendar */
+/* Tooltip & Calendar in Glassmorphism */
 tooltip,
 #tooltip {
-    background: rgba(30, 30, 46, 0.98);
+    background: rgba(24, 24, 37, 0.95);
     border-radius: 12px;
-    border: 1px solid rgba(137, 180, 250, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 tooltip label,
 #tooltip label {
-    padding: 6px;
+    padding: 8px 12px;
     font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 14px;
+    font-size: 13px;
     color: @text_color;
 }
 
@@ -278,7 +286,7 @@ tooltip calendar>header,
 #tooltip calendar>header {
     color: @accent_mauve;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     margin-bottom: 8px;
 }
 
@@ -286,7 +294,7 @@ tooltip calendar>highlight,
 #tooltip calendar>highlight {
     color: @accent_red;
     background-color: rgba(243, 139, 168, 0.2);
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 tooltip calendar>.days,
@@ -300,16 +308,16 @@ tooltip calendar>.today,
     font-weight: bold;
 }
 
-
-/* Tray */
+/* System Tray */
 #tray {
-    padding: 0 5px;
+    padding: 0 6px;
 }
 
 /* Animations */
 @keyframes blink {
     to {
-        background-color: @bg_alt;
+        background-color: rgba(243, 139, 168, 0.4);
         color: @accent_red;
+        box-shadow: 0 0 15px @accent_red;
     }
 }
