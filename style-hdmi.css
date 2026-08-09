@@ -3,6 +3,12 @@
     min-height: 0;
 }
 
+#waybar.hdmi-bar .modules-left,
+#waybar.hdmi-bar .modules-center,
+#waybar.hdmi-bar .modules-right {
+    border-radius: 0 0 10px 10px;
+}
+
 #waybar.hdmi-bar * {
     font-size: 10px;
     min-height: 0;

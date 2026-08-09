@@ -3,7 +3,10 @@
   "position": "top",
   "output": "HDMI-A-2",
   "name": "hdmi-bar",
-  "height": 24,
+  "height": 16,
+  "margin-top": 0,
+  "margin-left": 12,
+  "margin-right": 12,
   "margin-bottom": 0,
   "include": [
     "/home/rashidnarikkodan/.config/waybar/modules.jsonc"

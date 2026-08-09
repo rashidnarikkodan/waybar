@@ -195,5 +195,14 @@
     "return-type": "json",
     "exec": "echo '{\"tooltip\": \"Shutdown System\"}'",
     "interval": 86400
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰛩", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+    "on-scroll-up": "/home/rashidnarikkodan/.config/waybar/brightness.sh up",
+    "on-scroll-down": "/home/rashidnarikkodan/.config/waybar/brightness.sh down",
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}%"
   }
 }

@@ -1,19 +1,22 @@
-/* Unified Premium Waybar Theme - Fiery Black Hole (Gold Base case) */
+@import url("/home/rashidnarikkodan/.config/hypr/config/colors.css");
+
+/* Unified Premium Waybar Theme - Dynamic Theme */
 
 @define-color bg_color #080505;
 @define-color bg_alt rgba(15, 10, 10, 0.65);
 @define-color text_color #fff3e0;
 @define-color subtext #ffe0b2;
 
-@define-color accent_orange #ff5722;
-@define-color accent_amber #ff9800;
-@define-color accent_gold #ffc107;
+/* Dynamic wallpaper-based accents */
+@define-color accent_orange @color1;
+@define-color accent_amber @color2;
+@define-color accent_gold @color2;
 @define-color warning_yellow #ffeb3b;
 @define-color critical_red #ff3d00;
 
-@define-color hover_bg rgba(255, 87, 34, 0.12);
-@define-color hover_border rgba(255, 152, 0, 0.4);
-@define-color hover_glow rgba(255, 87, 34, 0.25);
+@define-color hover_bg rgba(255, 255, 255, 0.05);
+@define-color hover_border @color1;
+@define-color hover_glow rgba(255, 255, 255, 0.1);
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
@@ -23,12 +26,22 @@
 }
 
 window#waybar {
-    background-color: rgba(8, 5, 5, 0.65);
+    background-color: transparent;
     color: @text_color;
-    border-bottom: 1px solid rgba(255, 152, 0, 0.08);
 }
 
-/* Base Module Styling with Glassmorphism */
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: rgba(8, 5, 5, 0.65);
+    border: 1px solid rgba(255, 152, 0, 0.15);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Module Styling inside the sections */
 #workspaces,
 #window,
 #clock,
@@ -40,6 +53,7 @@ window#waybar {
 #temperature,
 #disk,
 #battery,
+#backlight,
 #privacy,
 #tray,
 #custom-power,
@@ -48,12 +62,12 @@ window#waybar {
 #custom-logout,
 #custom-reboot,
 #custom-quit {
-    background: @bg_alt;
-    padding: 1px 14px;
-    margin: 4px 3px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 152, 0, 0.08);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    background: transparent;
+    padding: 0px 10px;
+    margin: 1px 1px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    box-shadow: none;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -67,6 +81,7 @@ window#waybar {
 #temperature:hover,
 #disk:hover,
 #battery:hover,
+#backlight:hover,
 #privacy:hover,
 #custom-power:hover,
 #custom-lock:hover,
@@ -81,12 +96,12 @@ window#waybar {
 
 /* Workspaces */
 #workspaces {
-    padding: 2px 8px;
+    padding: 0px 4px;
 }
 
 #workspaces button {
-    padding: 0 8px;
-    margin: 2px 0;
+    padding: 0 6px;
+    margin: 1px 0;
     color: @subtext;
     background: transparent;
     border-radius: 12px;
@@ -102,7 +117,7 @@ window#waybar {
     color: #080505;
     background: linear-gradient(45deg, @accent_orange, @accent_gold);
     font-weight: bold;
-    box-shadow: 0 0 12px rgba(255, 87, 34, 0.45);
+    /* box-shadow: 0 0 12px rgba(255, 87, 34, 0.45); */
 }
 
 #workspaces button.urgent {
@@ -227,6 +242,11 @@ window#waybar {
 
 /* Battery Settings */
 #battery {
+    color: @accent_gold;
+}
+
+/* Backlight Settings */
+#backlight {
     color: @accent_gold;
 }
 
@@ -363,6 +383,7 @@ tooltip calendar>.today,
         background-color: rgba(255, 61, 0, 0.45);
         box-shadow: 0 0 8px rgba(255, 61, 0, 0.35);
     }
+
     100% {
         background-color: rgba(255, 61, 0, 0.85);
         box-shadow: 0 0 18px rgba(255, 61, 0, 0.75);
