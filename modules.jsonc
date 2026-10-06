@@ -1,15 +1,34 @@
 {
   "hyprland/workspaces": {
     "disable-scroll": false,
-    "all-outputs": true,
+    "all-outputs": false,
     "active-only": false,
     "sort-by-number": true,
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format": "{name}",
-    "persistent-workspaces": {
-      "*": 5
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "11": "1",
+      "12": "2",
+      "13": "3",
+      "14": "4",
+      "15": "5",
+      "16": "6",
+      "17": "7",
+      "18": "8",
+      "19": "9",
+      "20": "10"
     }
   },
   "hyprland/window": {
@@ -68,6 +87,19 @@
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "kitty -e impala"
   },
+  "network#speed": {
+    "interval": 1,
+    "format": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-wifi": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-ethernet": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "format-disconnected": "󰤭 0 B/s",
+    "tooltip-format": "{ifname} via {gwaddr}\n Down: {bandwidthDownBytes} ({bandwidthDownBits})\n Up: {bandwidthUpBytes} ({bandwidthUpBits})",
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n Down: {bandwidthDownBytes} ({bandwidthDownBits})\n Up: {bandwidthUpBytes} ({bandwidthUpBits})",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\n Down: {bandwidthDownBytes} ({bandwidthDownBits})\n Up: {bandwidthUpBytes} ({bandwidthUpBits})",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 30,
+    "on-click": "kitty -e btop"
+  },
   "bluetooth": {
     "format": "󰂯",
     "format-disabled": "󰂲",
@@ -84,7 +116,7 @@
     "format-muted": "󰝟 Muted",
     "scroll-step": 5,
     "tooltip-format": "Volume: {volume}%",
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 3",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
@@ -104,7 +136,7 @@
     "format": "{format_source}",
     "format-source": "󰍬 {volume}%",
     "format-source-muted": "󰍭 Muted",
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 4",
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
     "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",

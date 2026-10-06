@@ -16,7 +16,8 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "network#speed"
   ],
   "modules-right": [
     "privacy",
