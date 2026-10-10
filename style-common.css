@@ -1,7 +1,9 @@
-@import url("/home/rashidnarikkodan/.config/hypr/config/colors.css");
+@import url("/home/rashidnarikkodan/.config/hypr/colors.css");
 
 /* Unified Premium Waybar Theme - Dynamic Theme */
-
+/* Fallback palette used when the imported theme file is missing or incomplete. */
+@define-color color1 #ff7a00;
+@define-color color2 #ffd166;
 @define-color bg_color #080505;
 @define-color bg_alt rgba(15, 10, 10, 0.65);
 @define-color text_color #fff3e0;
