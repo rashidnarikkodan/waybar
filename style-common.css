@@ -1,24 +1,6 @@
 @import url("/home/rashidnarikkodan/.config/hypr/colors.css");
 
-/* Unified Premium Waybar Theme - Dynamic Theme */
-/* Fallback palette used when the imported theme file is missing or incomplete. */
-@define-color color1 #ff7a00;
-@define-color color2 #ffd166;
-@define-color bg_color #080505;
-@define-color bg_alt rgba(15, 10, 10, 0.65);
-@define-color text_color #fff3e0;
-@define-color subtext #ffe0b2;
-
-/* Dynamic wallpaper-based accents */
-@define-color accent_orange @color1;
-@define-color accent_amber @color2;
-@define-color accent_gold @color2;
-@define-color warning_yellow #ffeb3b;
-@define-color critical_red #ff3d00;
-
-@define-color hover_bg rgba(255, 255, 255, 0.05);
-@define-color hover_border @color1;
-@define-color hover_glow rgba(255, 255, 255, 0.1);
+/* Unified Dynamic Premium Waybar Theme - Driven by Matugen & Material You */
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
@@ -32,14 +14,15 @@ window#waybar {
     color: @text_color;
 }
 
+/* Glassmorphic Pill Sections */
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: rgba(8, 5, 5, 0.65);
-    border: 1px solid rgba(255, 152, 0, 0.15);
+    background-color: alpha(@bar_bg, 0.82);
+    border: 1px solid alpha(@primary, 0.35);
     border-top: none;
     border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 alpha(@primary, 0.12);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -49,6 +32,8 @@ window#waybar {
 #clock,
 #pulseaudio,
 #network,
+#network#speed,
+#network#ethernet,
 #bluetooth,
 #cpu,
 #memory,
@@ -65,18 +50,20 @@ window#waybar {
 #custom-reboot,
 #custom-quit {
     background: transparent;
-    padding: 0px 10px;
+    padding: 0px 9px;
     margin: 1px 1px;
     border-radius: 12px;
     border: 1px solid transparent;
     box-shadow: none;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover effects: Accretion Disk Glow */
+/* Dynamic Hover Effects */
 #clock:hover,
 #pulseaudio:hover,
 #network:hover,
+#network#speed:hover,
+#network#ethernet:hover,
 #bluetooth:hover,
 #cpu:hover,
 #memory:hover,
@@ -91,9 +78,9 @@ window#waybar {
 #custom-logout:hover,
 #custom-reboot:hover,
 #custom-quit:hover {
-    background: @hover_bg;
-    border: 1px solid @hover_border;
-    box-shadow: 0 4px 12px @hover_glow, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: alpha(@hover_bg, 0.6);
+    border: 1px solid alpha(@primary, 0.35);
+    box-shadow: 0 4px 12px alpha(@primary_container, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Workspaces */
@@ -102,292 +89,218 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 6px;
-    margin: 1px 0;
+    padding: 0 7px;
+    margin: 1px 1px;
     color: @subtext;
     background: transparent;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    background: rgba(255, 152, 0, 0.12);
-    color: @accent_gold;
+    background: alpha(@primary, 0.18);
+    color: @primary;
 }
 
 #workspaces button.active {
-    color: #080505;
-    background: linear-gradient(45deg, @accent_orange, @accent_gold);
+    color: @on_primary;
+    background: linear-gradient(135deg, @primary, @tertiary);
     font-weight: bold;
-    /* box-shadow: 0 0 12px rgba(255, 87, 34, 0.45); */
+    border-radius: 10px;
+    box-shadow: 0 0 12px alpha(@primary, 0.45);
 }
 
 #workspaces button.urgent {
     background: @critical_red;
-    color: #ffffff;
+    color: @on_error;
     box-shadow: 0 0 10px @critical_red;
 }
 
-/* Window Title */
+/* Active Window Title */
 #window {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    color: @accent_gold;
-    font-weight: bold;
+    color: @primary;
+    font-weight: 600;
 }
 
-/* Clock */
+/* Clock & Speed (Center Section) */
 #clock {
-    color: @accent_gold;
-    font-weight: bold;
+    color: @primary;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* System Monitors (CPU/Memory/Disk/Temp) styled in gold base case, transitioning to orange/red like fire */
+#network#speed {
+    color: @tertiary;
+    font-weight: 500;
+}
+
+/* System Monitors (CPU/Memory/Disk/Temp) */
 #cpu {
-    color: @accent_gold;
+    color: @text_color;
 }
 
 #cpu.warning {
-    color: @accent_orange;
+    color: @tertiary;
 }
 
 #cpu.critical {
     background: @critical_red;
-    color: #ffffff;
+    color: @on_error;
     border: 1px solid @critical_red;
-    animation-name: pulse;
-    animation-duration: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: pulse 0.8s infinite alternate;
 }
 
 #memory {
-    color: @accent_gold;
+    color: @text_color;
 }
 
 #memory.warning {
-    color: @accent_orange;
+    color: @tertiary;
 }
 
 #memory.critical {
     background: @critical_red;
-    color: #ffffff;
+    color: @on_error;
     border: 1px solid @critical_red;
-    animation-name: pulse;
-    animation-duration: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: pulse 0.8s infinite alternate;
 }
 
 #disk {
-    color: @accent_gold;
+    color: @text_color;
 }
 
 #temperature {
-    color: @accent_gold;
+    color: @text_color;
 }
 
 #temperature.critical {
     background: @critical_red;
-    color: #ffffff;
+    color: @on_error;
     border: 1px solid @critical_red;
-    animation-name: pulse;
-    animation-duration: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: pulse 0.8s infinite alternate;
 }
 
 /* Network & Bluetooth */
 #network {
-    color: @accent_gold;
+    color: @primary;
 }
 
 #network.disconnected {
     color: @critical_red;
 }
 
+#network#ethernet {
+    color: @tertiary;
+}
+
 #bluetooth {
-    color: @accent_gold;
+    color: @primary;
 }
 
 #bluetooth.connected {
-    color: @accent_gold;
+    color: @primary;
 }
 
-/* Audio Settings (Speakers) */
+#bluetooth.disabled {
+    color: @subtext;
+}
+
+/* Audio Settings */
 #pulseaudio:not(.microphone) {
-    color: @critical_red;
-}
-
-#pulseaudio:not(.microphone).critical {
-    color: @accent_gold;
+    color: @primary;
 }
 
 #pulseaudio:not(.microphone).muted {
     color: @subtext;
-    background: rgba(15, 10, 10, 0.35);
+    background: alpha(@surface_container, 0.4);
 }
 
-/* Microphone Settings */
 #pulseaudio.microphone {
-    color: @accent_gold;
+    color: @tertiary;
 }
 
 #pulseaudio.microphone.muted {
     color: @subtext;
-    background: rgba(15, 10, 10, 0.35);
+    background: alpha(@surface_container, 0.4);
 }
 
-/* Battery Settings */
-#battery {
-    color: @accent_gold;
-}
-
-/* Backlight Settings */
+/* Backlight & Battery */
 #backlight {
-    color: @accent_gold;
+    color: @primary;
+}
+
+#battery {
+    color: @text_color;
 }
 
 #battery.charging,
 #battery.plugged {
-    color: @accent_orange;
+    color: @primary;
 }
 
 #battery.warning:not(.charging) {
-    color: @accent_orange;
-    background: rgba(255, 87, 34, 0.08);
-    border: 1px solid rgba(255, 87, 34, 0.2);
+    color: @tertiary;
+    background: alpha(@tertiary_container, 0.25);
+    border: 1px solid alpha(@tertiary, 0.3);
 }
 
 #battery.critical:not(.charging) {
     background: @critical_red;
-    color: #ffffff;
-    animation-name: pulse;
-    animation-duration: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    color: @on_error;
+    animation: pulse 0.8s infinite alternate;
 }
 
 /* Power Menu styling */
 #custom-power {
     color: @critical_red;
-    font-size: 16px;
-    padding: 0;
-    min-width: 35px;
-}
-
-/* Drawer Child Modules */
-#custom-lock {
-    color: @accent_gold;
-}
-
-#custom-suspend {
-    color: @accent_amber;
-}
-
-#custom-logout {
-    color: @accent_orange;
-}
-
-#custom-reboot {
-    color: @accent_amber;
-}
-
-#custom-quit {
-    color: @critical_red;
-}
-
-#custom-lock,
-#custom-suspend,
-#custom-logout,
-#custom-reboot,
-#custom-quit {
-    font-size: 16px;
-    padding: 0 14px;
+    font-size: 14px;
+    padding: 0 8px;
 }
 
 #custom-power:hover {
-    background: @critical_red;
-    color: #ffffff;
-    box-shadow: 0 0 15px @critical_red;
+    background: alpha(@critical_red, 0.2);
+    border-radius: 10px;
 }
 
-/* Privacy */
-#privacy {
-    color: @critical_red;
-}
-
-/* Tooltip & Calendar in Glassmorphism */
-tooltip,
-#tooltip {
-    background: rgba(10, 8, 8, 0.95);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 152, 0, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65);
-}
-
-tooltip label,
-#tooltip label {
-    padding: 8px 12px;
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 13px;
-    color: @text_color;
-}
-
-/* Specific Calendar Styling */
-tooltip calendar,
-#tooltip calendar {
-    padding: 10px;
-    margin: 5px;
-    background: transparent;
-    border-radius: 12px;
-}
-
-tooltip calendar>header,
-#tooltip calendar>header {
-    color: @accent_orange;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 8px;
-}
-
-tooltip calendar>highlight,
-#tooltip calendar>highlight {
-    color: #080505;
-    background-color: @accent_gold;
-    border-radius: 8px;
-}
-
-tooltip calendar>.days,
-#tooltip calendar>.days {
-    color: @subtext;
-}
-
-tooltip calendar>.today,
-#tooltip calendar>.today {
-    color: @accent_gold;
-    font-weight: bold;
-}
-
-/* System Tray */
+/* Tray & Privacy */
 #tray {
     padding: 0 6px;
 }
 
-/* Animations */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: alpha(@critical_red, 0.3);
+}
+
+#privacy {
+    padding: 0 4px;
+}
+
+/* Tooltips */
+tooltip {
+    background-color: alpha(@bar_bg, 0.94);
+    border: 1px solid alpha(@primary, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: @text_color;
+    font-size: 12px;
+}
+
+/* Smooth Pulse Animation for Critical States */
 @keyframes pulse {
     0% {
-        background-color: rgba(255, 61, 0, 0.45);
-        box-shadow: 0 0 8px rgba(255, 61, 0, 0.35);
+        opacity: 0.85;
     }
-
     100% {
-        background-color: rgba(255, 61, 0, 0.85);
-        box-shadow: 0 0 18px rgba(255, 61, 0, 0.75);
+        opacity: 1;
+        box-shadow: 0 0 10px @critical_red;
     }
 }

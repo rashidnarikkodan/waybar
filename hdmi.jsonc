@@ -1,6 +1,7 @@
 {
   "layer": "top",
   "position": "top",
+  "reload_style_on_change": true,
   "output": "HDMI-A-2",
   "name": "hdmi-bar",
   "height": 16,
@@ -27,6 +28,7 @@
     "temperature",
     "disk",
     "bluetooth",
+    "network#ethernet",
     "network",
     "pulseaudio#microphone",
     "pulseaudio",
