@@ -13,12 +13,11 @@
     "/home/rashidnarikkodan/.config/waybar/modules.jsonc"
   ],
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock",
-    "network#speed"
+    "custom/quote",
+    "clock"
   ],
   "modules-right": [
     "privacy",

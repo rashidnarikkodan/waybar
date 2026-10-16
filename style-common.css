@@ -21,8 +21,7 @@ window#waybar {
     background-color: alpha(@bar_bg, 0.82);
     border: 1px solid alpha(@primary, 0.35);
     border-top: none;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 alpha(@primary, 0.12);
+    border-radius: 0 0 14px 14px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -59,7 +58,6 @@ window#waybar {
 }
 
 /* Dynamic Hover Effects */
-#clock:hover,
 #pulseaudio:hover,
 #network:hover,
 #network#speed:hover,
@@ -78,18 +76,18 @@ window#waybar {
 #custom-logout:hover,
 #custom-reboot:hover,
 #custom-quit:hover {
-    background: alpha(@hover_bg, 0.6);
-    border: 1px solid alpha(@primary, 0.35);
-    box-shadow: 0 4px 12px alpha(@primary_container, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: alpha(@hover_bg, 0.3);
+    border-top: 2px solid alpha(@primary, 0.8);
+    border-radius: 0 0 12px 12px;
 }
 
 /* Workspaces */
 #workspaces {
-    padding: 0px 4px;
+    padding: 0px 0px;
 }
 
 #workspaces button {
-    padding: 0 7px;
+    padding: 0 5px;
     margin: 1px 1px;
     color: @subtext;
     background: transparent;
@@ -107,13 +105,11 @@ window#waybar {
     background: linear-gradient(135deg, @primary, @tertiary);
     font-weight: bold;
     border-radius: 10px;
-    box-shadow: 0 0 12px alpha(@primary, 0.45);
 }
 
 #workspaces button.urgent {
     background: @critical_red;
     color: @on_error;
-    box-shadow: 0 0 10px @critical_red;
 }
 
 /* Active Window Title */
@@ -147,7 +143,7 @@ window#waybar {
     background: @critical_red;
     color: @on_error;
     border: 1px solid @critical_red;
-    animation: pulse 0.8s infinite alternate;
+    animation: pulse 0.4s infinite alternate;
 }
 
 #memory {
@@ -254,12 +250,14 @@ window#waybar {
 #custom-power {
     color: @critical_red;
     font-size: 14px;
-    padding: 0 8px;
+    padding: 0 12px;
 }
 
 #custom-power:hover {
     background: alpha(@critical_red, 0.2);
-    border-radius: 10px;
+    border:none;
+    border-right: 2px solid @primary;
+    border-radius: 12px;
 }
 
 /* Tray & Privacy */
@@ -267,40 +265,40 @@ window#waybar {
     padding: 0 6px;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: alpha(@critical_red, 0.3);
 }
 
 #privacy {
-    padding: 0 4px;
+    padding: 0 2px;
 }
 
 /* Tooltips */
 tooltip {
     background-color: alpha(@bar_bg, 0.94);
     border: 1px solid alpha(@primary, 0.3);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
     padding: 8px 12px;
 }
 
 tooltip label {
     color: @text_color;
     font-size: 12px;
+    padding: 3px
 }
 
 /* Smooth Pulse Animation for Critical States */
 @keyframes pulse {
     0% {
-        opacity: 0.85;
+        opacity: 0.70;
     }
+
     100% {
         opacity: 1;
-        box-shadow: 0 0 10px @critical_red;
     }
 }

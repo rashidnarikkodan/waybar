@@ -13,9 +13,6 @@
     font-size: 10px;
     min-height: 0;
 }
-
-#waybar.hdmi-bar #workspaces,
-#waybar.hdmi-bar #window,
 #waybar.hdmi-bar #clock,
 #waybar.hdmi-bar #pulseaudio,
 #waybar.hdmi-bar #network,
@@ -34,28 +31,28 @@
 #waybar.hdmi-bar #custom-reboot,
 #waybar.hdmi-bar #custom-quit {
     padding: 0 8px;
-    margin: 1px 1px;
-    border-radius: 8px;
-    min-height: 0;
-}
-
-#waybar.hdmi-bar #workspaces button {
-    padding: 0 8px;
     margin: 0px;
-    border-radius: 8px;
     min-height: 0;
 }
 
+
+/*
 #waybar.hdmi-bar #custom-power {
     font-size: 11px;
     min-width: 20px;
-}
+    }
 
-#waybar.hdmi-bar #custom-lock,
-#waybar.hdmi-bar #custom-suspend,
+    #waybar.hdmi-bar #custom-lock,
+    #waybar.hdmi-bar #custom-suspend,
 #waybar.hdmi-bar #custom-logout,
 #waybar.hdmi-bar #custom-reboot,
 #waybar.hdmi-bar #custom-quit {
     font-size: 11px;
     padding: 0px 8px;
-}
+} */
+    #waybar.hdmi-bar #workspaces button {
+        padding:2px;
+        margin: 0px;
+        border-radius: 8px;
+        min-height: 0;
+    }
